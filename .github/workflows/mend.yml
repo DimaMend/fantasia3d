@@ -22,4 +22,15 @@ jobs:
         pip install virtualenv --user
         pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
         pip install -r requirements.txt
+
+    - name: Mend CLI Scan (Ubuntu)
+        env:
+          MEND_EMAIL: ${{secrets.MEND_EMAIL}}
+          MEND_USER_KEY: ${{secrets.MEND_USER_KEY}}
+          MEND_URL: https://saas.mend.io
+        run: |
+          echo Downloading Mend CLI
+          curl https://downloads.mend.io/cli/linux_amd64/mend -o /usr/local/bin/mend && chmod +x /usr/local/bin/mend
+          echo run Mend scan
+          mend dep -u
         
