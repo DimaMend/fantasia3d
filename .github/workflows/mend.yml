@@ -32,5 +32,4 @@ jobs:
           echo Downloading Mend CLI
           curl https://downloads.mend.io/cli/linux_amd64/mend -o /usr/local/bin/mend && chmod +x /usr/local/bin/mend
           echo run Mend scan
-          mend dep -u
-        
+          mend dep -u -s "*//AI//fantasia3d" 
